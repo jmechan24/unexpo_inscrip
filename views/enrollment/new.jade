@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    form(action="/enrollment/new", method="POST")
+        .container.py-2
+            .row
+                .col-12.py-2
+                    h2= title
+                .col-md-6.col-12
+                    label.form-label(for="student") Estudiante
+                    select#student.form-select(name="student")
+                        - for (let i = 0; i < students.length; i++)
+                        option(value=students[i].id)= students[i].name
+                .col-md-6.col-12
+                    label.form-label(for="academicPeriod") Periodo académico
+                    select#academicPeriod.form-select(name="academicPeriod")
+                        - for (let i = 0; i < academicPeriods.length; i++)
+                        option(value=academicPeriods[i].id)= academicPeriods[i].name
+                .col-md-12.col-12.py-2
+                    button.btn.btn-primary(type="submit") Crear
+                    a.btn.btn-secondary.ml-3(href="/enrollment/list") Cancelar

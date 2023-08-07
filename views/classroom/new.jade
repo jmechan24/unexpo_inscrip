@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    
+    form(action="/classroom/new", method= "POST")
+        .container.py-2
+            .row 
+                .col-12.py-2
+                    h2= title
+                .col-md-6.col-12 
+                    label.form-label(for="code") Codigo
+                    input#code.form-control(type="text", name="code")
+
+
+                .col-md-6.col-12.py-2
+                    label.form-label(for="location") Lugar
+                    select#location.form-select(name="location")
+                        //-option(value="1") Basico
+                        -for (let i = 0; i < locations.length; i++)
+                                            option(value=locations[i].id)=locations[i].location
+
+                .col-md-12.col-12.py-2
+                    button.btn.btn-primary(type="submit") Crear
+                    |   
+                    a.btn.btn-secondary.ml-3(href="/classroom") Cancelar
+

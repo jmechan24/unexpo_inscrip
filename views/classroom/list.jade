@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+    .container.py-2
+        .row     
+            .col-12.py-2
+                h2= title        
+            .col-12.py-2
+                table.table
+                    thead
+                        tr
+                            th(scope='col') #
+                            th(scope='col') Codigo
+                            th(scope='col') Lugar
+                    tbody
+                        //each room in classroom
+                        -for(let i= 0; i < classrooms.length; i++)
+                            tr
+                                th(scope='row')=classrooms[i].id
+                                td=classrooms[i].code
+                                td=classrooms[i].location
+                                td
+                                    a.bi.bi-pencil-square.mx-2(href="/classroom/update/" + classrooms[i].id)
+                                    a.bi.bi-trash2-fill.mx-2(href="#")
+
+            .col-12.py-2
+                a.btn.btn-primary(href="/classroom/new") Nuevo Salon

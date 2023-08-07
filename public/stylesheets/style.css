@@ -1,0 +1,13 @@
+body {
+  padding: 50px;
+  font: italic bolder 20px "Comic Sans";
+  /* "Lucida Grande", Helvetica, Arial, sans-serif; */
+  background-color: #c1dae6;
+  color: #032c3f;
+}
+
+a {
+  color: #00B7FF;
+}
+
+

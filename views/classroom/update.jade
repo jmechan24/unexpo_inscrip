@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    
+    form(action="/classroom/update", method= "POST")
+        input(type="hidden", name="id", value=classroom.id)
+        .container.py-2
+            .row 
+                .col-12.py-2
+                    h2= title
+                .col-md-6.col-12 
+                    label.form-label(for="code") Codigo
+                    input#code.form-control(type="text", name="code", value=classroom.code)
+
+                .col-md-6.col-12.py-2 
+                    label.form-label(for="location") Lugar
+                    select#location.form-select(name="location")
+                        -for(let i = 0; i < locations.length; i++)
+                            option(value=locations[i].id, selected = value=(classroom.location_id == locations[i].id))=locations[i].name
+
+
+
+                .col-md-12.col-12.py-2 
+                    button.btn.btn-primary(type="submit") Actualizar
+                    |  
+                    a.btn.btn-secondary(href="/classroom") Cancelar

@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+    .container.py-2
+        .row
+            .col-12.py-2
+                h2= title
+            .col-12.py-2
+                table.table
+                    thead
+                        tr
+                            th(scope='col') #
+                            th(scope='col') Estudiante
+                            th(scope='col') Estatus
+                            th(scope='col') Acciones
+                    tbody
+                        //each enrollment in enrollments
+                        - for (let i = 0; i < enrollments.length; i++)
+                        tr
+                            th(scope='row')= enrollments[i].id
+                            td= enrollments[i].student.name
+                            td= enrollments[i].status
+                            td
+                                a.btn.btn-primary.mx-2(href="/enrollment/view/" + enrollments[i].id) Consultar
+                        tr
+                            td(colspan='4')
+                                a.btn.btn-primary(href="/enrollment/create") Crear inscripción para nuevo estudiante
