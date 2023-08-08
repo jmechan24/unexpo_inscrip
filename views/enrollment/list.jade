@@ -10,18 +10,28 @@ block content
                     thead
                         tr
                             th(scope='col') #
-                            th(scope='col') Estudiante
+                            th(scope='col') Periodo
+                            th(scope='col') Nombre
+                            th(scope='col') Apellido
                             th(scope='col') Estatus
-                            th(scope='col') Acciones
+                            th(scope='col') Fecha de Creacion
                     tbody
                         //each enrollment in enrollments
-                        - for (let i = 0; i < enrollments.length; i++)
+                        -for (let i = 0; i < enrollments.length; i++)
                         tr
                             th(scope='row')= enrollments[i].id
-                            td= enrollments[i].student.name
-                            td= enrollments[i].status
+                            td= enrollments[i].period
+                            td= enrollments[i].student.first_name
+                            td= enrollments[i].student.last_name
+                            td= enrollments[i].date.toLocaleString()
                             td
-                                a.btn.btn-primary.mx-2(href="/enrollment/view/" + enrollments[i].id) Consultar
+                                if enrollments[i].status === 'Borrador'
+                                    a.btn.btn-primary(href="/enrollment/register" + enrollments[i].id) Borrador
+                                else
+                                    =enrollments[i].status
+                                td
+                                    a.bi.bi-pencil-square.mx-2(href="/enrollment/update" + list[i].id, style="text-decoration: none;")
+
                         tr
                             td(colspan='4')
-                                a.btn.btn-primary(href="/enrollment/create") Crear inscripción para nuevo estudiante
+                                a.btn.btn-primary(href="/enrollment/new") Crear inscripción para nuevo estudiante

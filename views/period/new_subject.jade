@@ -1,0 +1,45 @@
+extends ../layout
+
+block content
+    
+    form(action="/period/courses/new", method= "POST")
+        input(type="hidden", name="id_period", value=id_period)
+        .container.py-2
+            .row 
+                .col-12.py-2
+                    h2= title
+                .col-md-12.col-12 
+                    br           
+                -if(message)         
+                    .col-md-12.col-12
+                        .alert.alert-danger 
+                            | #{message}
+                    .col-md-12.col-12 
+                        br                                        
+                .col-md-6.col-12 
+                    label.form-label(for="id_teacher") Profesor
+                    select#id_teacher.form-control(name="id_teacher")
+                        -for(let i = 0; i < teachers.length; i++)
+                            option(value=teachers[i].id, selected=(model && model.id_teacher == teachers[i].id ? true : false))=teachers[i].first_name
+                .col-md-6.col-12 
+                    label.form-label(for="courses_id") Meteria
+                    select#courses_id.form-control(name="courses_id")
+                        -for(let i = 0; i < courses.length; i++)
+                            option(value=courses[i].id, selected=(model && model.course_id == courses[i].id ?  true :  false))=courses[i].name
+        
+                .col-md-12.col-12 
+                    br
+                .col-md-6.col-12 
+                    label.form-label(for="classroom_id") Aula
+                    input#classroom_id.form-control(type="text", name="classroom_id", value=(model ? model.classroom_id : ""))
+                .col-md-6.col-12 
+                    label.form-label(for="section") Sección 
+                    input#section.form-control(type="text", name="section", value=(model ? model.section : ""))
+        
+                .col-md-12.col-12 
+                    br
+
+                .col-md-12.col-12.py-2 
+                    button.btn.btn-primary(type="submit") Aperturar
+                    |  
+                    a.btn.btn-secondary(href="/period") Cancelar

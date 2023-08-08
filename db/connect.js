@@ -5,7 +5,7 @@ var pool = null;
 var config = {
     connectionLimit: 10,
     host: 'localhost',
-    user: 'toor',
+    user: 'root',
     password: 'q',
     database: 'unexpo_inscrip',
     port: 3306
